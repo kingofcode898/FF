@@ -1,40 +1,58 @@
-
 import React, { useState } from 'react';
+import OpenAI from 'openai';
 
-const ChatComponent = () => {
-  const [messages, setMessages] = useState([]);
+interface Props {
+  level: string;
+  language: string;
+}
+
+const ChatComponent: React.FC<Props> = (props: Props) => {
+  
+
+  const [messages, setMessages] = useState<{ text: string; isUser: boolean; timestamp: number }[]>([]);
   const [userInput, setUserInput] = useState('');
 
-  const addMessage = (text, isUser = true) => {
-    const newMessage = { text, isUser };
-    setMessages([...messages, newMessage]);
+  const addMessage = (text: string, isUser = true) => {
+    const newMessage = { text, isUser, timestamp: Date.now() };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
   };
 
-  function handleInputChange(e) {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
-  }
+  };
 
-  const handleSendMessage = () => {
+  const handleBotMessage = async (prompt: string, level: string, language: string) => { 
+
+    // Make an API call to generate the bot's response
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: `You are a language tutor bot. Teach in ${language}. You will first ask in English what the topic of the practice conversation will be. Then you will have a conversation based on the topic using ${level} ${language}.` },
+        { role: 'user', content: prompt }]
+    });
+
+    // Extract the bot's response
+    const botResponse = response.choices[0].message.content;
+
+    return botResponse;
+  };
+
+  const handleSendMessage = async () => {
     if (userInput.trim() !== '') {
-      // Add the user's message to the chat history
       addMessage(userInput, true);
-  
-      // Simulate a bot response (you can replace this with actual bot logic)
-      addMessage('Placeholder Bot Response', false);
-  
-      // Clear the input field
+      
+      const botResponse = await handleBotMessage(userInput, 'easy', 'Spanish');
+      addMessage(botResponse, false);
       setUserInput('');
     }
   };
-  
 
   return (
     <div>
       <div className="chat-window">
-        {/* Map over the messages array and create an HTML element for each message */}
-        {messages.map((message, index) => (
+        {messages.map((message) => (
           <div
-            key={index}
+            key={message.timestamp}
             className={message.isUser ? 'user-message' : 'bot-message'}
           >
             {message.text}
@@ -55,3 +73,4 @@ const ChatComponent = () => {
 };
 
 export default ChatComponent;
+
