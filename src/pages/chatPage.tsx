@@ -1,8 +1,14 @@
 import React from 'react'
+import ChatComponent from '../componenets/chat'
 
 function ChatPage() {
   return (
-    <div>ChatPage</div>
+    <>
+      <div className='chatPage'>
+        <ChatComponent language='Spanish' level='beginner' />
+      </div>
+      
+    </>
   )
 }
 

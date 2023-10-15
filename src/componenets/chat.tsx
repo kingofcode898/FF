@@ -24,16 +24,16 @@ const ChatComponent: React.FC<Props> = (props: Props) => {
   const handleBotMessage = async (prompt: string, level: string, language: string) => { 
 
     // Make an API call to generate the bot's response
-    const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        { role: 'system', content: `You are a language tutor bot. Teach in ${language}. You will first ask in English what the topic of the practice conversation will be. Then you will have a conversation based on the topic using ${level} ${language}.` },
-        { role: 'user', content: prompt }]
-    });
+    // const response = await openai.chat.completions.create({
+    //   model: 'gpt-3.5-turbo',
+    //   messages: [
+    //     { role: 'system', content: `You are a language tutor bot. Teach in ${language}. You will first ask in English what the topic of the practice conversation will be. Then you will have a conversation based on the topic using ${level} ${language}.` },
+    //     { role: 'user', content: prompt }]
+    // });
 
-    // Extract the bot's response
-    const botResponse = response.choices[0].message.content;
-
+    // // Extract the bot's response
+    // const botResponse = response.choices[0].message.content;
+    let botResponse = "This is the longer text hwer e we are going to test a longer response on the robots side"
     return botResponse;
   };
 
@@ -42,10 +42,12 @@ const ChatComponent: React.FC<Props> = (props: Props) => {
       addMessage(userInput, true);
       
       const botResponse = await handleBotMessage(userInput, 'easy', 'Spanish');
-      addMessage(botResponse, false);
+      addMessage(botResponse, false,);
       setUserInput('');
     }
   };
+
+  
 
   return (
     <div>
@@ -55,7 +57,7 @@ const ChatComponent: React.FC<Props> = (props: Props) => {
             key={message.timestamp}
             className={message.isUser ? 'user-message' : 'bot-message'}
           >
-            {message.text}
+            <p className={message.isUser ? 'user-text': 'bot-text'}>{message.text}</p>
           </div>
         ))}
       </div>

@@ -1,12 +1,4 @@
-.bot-message {
-    background-color: blue;
-    width: 150px;
-    
-}
-.user-message{
-background-color: azure;
-text-align: right;
-}
+
 
 /* Style for the navigation bar */
 .navbar {
@@ -106,3 +98,121 @@ text-align: right;
     background: linear-gradient(10deg, rgb(0, 32, 95) 2.8%, rgb(45, 43, 141) 97.8%);
 
   }
+
+  .chatPage{
+    margin-top: 50px;
+    
+  }
+
+  .chat-window {
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    max-width: 100%; /* Optional to limit the width */
+  }
+  
+  .user-message {
+    align-self: flex-end; /* Align user messages to the right */
+    background-color: #4CAF50; /* Add styling for user messages */
+    color: white;
+    padding-left: 5px;
+    margin: 8px;
+    border-radius: 5px;
+    max-width: 50%;
+    word-wrap: break-word; /* Wrap long words */
+  }
+  
+  .bot-message {
+    align-self: flex-start; /* Align receiver messages to the left */
+    background-color: #008CBA; /* Add styling for receiver messages */
+    color: white;
+    padding-left: 5px;
+    margin: 8px;
+    border-radius: 50px;
+    max-width: 50%;
+    word-wrap: break-word; /* Wrap long words */
+    
+  }
+
+
+
+.bot-text {
+    margin:7px;
+    word-wrap: break-word;
+    overflow: hidden;
+    animation: typewriter 2s steps(10) 1s both;
+}
+
+.input-container{
+  position: fixed;
+  bottom: 5px;
+  right: 10vw;
+}
+
+.input-container input{
+  width: 60vw;
+  height: 40px;
+  margin-right: 10px;
+  padding: 10px 10px 10px 10px;
+  border:1px solid grey;
+  border-radius: 10px;
+  font-size: 24px;
+  outline: none;
+}
+
+
+.input-container button{
+  height: 55px;
+  width: 20vw;
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.input-container button:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.input-container button:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.input-container button:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.input-container button:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+
