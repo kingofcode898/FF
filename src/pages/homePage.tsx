@@ -1,4 +1,5 @@
 import React from "react";
+import span from "../assets/span.png"
 interface stats {
     practiceTime: number,
     Language: String
@@ -9,7 +10,10 @@ function HomePage(props: stats) {
     <div className="home">
       <div className="shortCards">
         <div className="cardshort" id="stats">
-            <div></div>
+            <div>
+              <h1>Spanish </h1>
+              <img id="flag" src={span}/>
+            </div>
         </div>
         <div className="cardshort">hello this is some test text</div>
       </div>

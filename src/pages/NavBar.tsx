@@ -1,4 +1,6 @@
 import React from 'react'
+import logo from '../assets/logo.png'
+
 import {Link,Outlet} from "react-router-dom"
 
 function NavBar() {
@@ -6,7 +8,7 @@ function NavBar() {
     
     <>
     <div className='navbar'>
-        <img src={"./src/assests/logo.png"}/>
+        <img id="logo" src={logo}/>
         <nav>
         <Link to="/">Home</Link>
         <Link to= "/chat">Chat</Link>

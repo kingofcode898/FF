@@ -20,6 +20,7 @@ text-align: right;
     padding: 0; /* Remove padding */
     width: 100%; /* Full width */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    display: flex;
    
   }
   
@@ -37,6 +38,10 @@ text-align: right;
     background-color: #ddd;
     color: black;
   }
+#logo{
+  max-width: 50px;
+}
+
   html, body {
     margin: 0;
     padding: 0;
@@ -50,6 +55,7 @@ text-align: right;
     height: 100vh;
     margin: 0;
     padding: 0;
+    color: white;
   }
   
   .shortCards{
@@ -78,7 +84,7 @@ text-align: right;
   .cardshort{ 
     margin-top: 35px;
     margin-left: 3vw;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
     width: 40vw;
     height: 350px;
     border-radius: 10px;
@@ -87,10 +93,16 @@ text-align: right;
     
   }
 
+  #flag{
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
   #stats{
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    
+    /* background: linear-gradient(to top, #0ba360 0%, #3cba92 100%); */
+    background: linear-gradient(10deg, rgb(0, 32, 95) 2.8%, rgb(45, 43, 141) 97.8%);
 
   }
