@@ -86,8 +86,7 @@
   }
 
   #flag{
-    max-width: 200px;
-    max-height: 200px;
+    width: 50px; height: 50px;
     overflow: hidden;
   }
 

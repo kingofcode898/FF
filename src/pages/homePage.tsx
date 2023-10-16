@@ -15,16 +15,17 @@ function HomePage(props: stats) {
               <h1>Spanish </h1>
               <img id="flag" src={span}/>
               <div className="stat">
-                <div>
-                  <h1></h1>
+                <div className="practice-time">
+                  <h1>Time practiced</h1>
+                  <h2>{props.practiceTime}</h2>
                 </div>
               </div>
             </div>
         </div>
-        <div className="cardshort">hello this is some test text</div>
+        <div className="cardshort" id="start">hello this is some test text</div>
       </div>
       <div className="longCards">
-        <div className="cardLong">fasdfs</div>
+        <div className="cardLong">More test</div>
       </div>
     </div>
   );
