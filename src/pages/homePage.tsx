@@ -11,13 +11,24 @@ function HomePage(props: stats) {
     <div className="home">
       <div className="shortCards">
         <div className="cardshort" id="stats">
-            <div>
-              <h1>Spanish </h1>
+            <div>  
+              <div id="stats-title">
               <img id="flag" src={span}/>
-              <div className="stat">
-                <div className="practice-time">
-                  <h1>Time practiced</h1>
-                  <h2>{props.practiceTime}</h2>
+              <h1>Spanish </h1>
+              </div>
+              <div>
+                <div className="stat">
+                  <h1 >Time practiced</h1>
+                  <div id="circle">
+                    <h2 className="value">{props.practiceTime}</h2>
+                  </div>
+                  
+                </div>
+                <div className="stat">
+
+                </div>
+                <div className="stat">
+
                 </div>
               </div>
             </div>

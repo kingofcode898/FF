@@ -8,8 +8,15 @@ interface Props {
 
 const ChatComponent: React.FC<Props> = (props: Props) => {
   
-
-  const [messages, setMessages] = useState<{ text: string; isUser: boolean; timestamp: number }[]>([]);
+  const openai = new OpenAI(
+  {
+  apiKey: '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',
+  dangerouslyAllowBrowser: true
+});
+  
+  let level = props.level
+  let language = props.language
+  const [messages, setMessages] = useState<{ text: any; isUser: boolean; timestamp: number }[]>([]);
   const [userInput, setUserInput] = useState('');
 
   const addMessage = (text: string, isUser = true) => {
@@ -24,16 +31,16 @@ const ChatComponent: React.FC<Props> = (props: Props) => {
   const handleBotMessage = async (prompt: string, level: string, language: string) => { 
 
     // Make an API call to generate the bot's response
-    // const response = await openai.chat.completions.create({
-    //   model: 'gpt-3.5-turbo',
-    //   messages: [
-    //     { role: 'system', content: `You are a language tutor bot. Teach in ${language}. You will first ask in English what the topic of the practice conversation will be. Then you will have a conversation based on the topic using ${level} ${language}.` },
-    //     { role: 'user', content: prompt }]
-    // });
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: `You are a language tutor bot. Teach in ${language}. You will first ask in English what the topic of the practice conversation will be. Then you will have a conversation based on the topic using ${level} ${language}.` },
+        { role: 'user', content: prompt }]
+    });
 
-    // // Extract the bot's response
-    // const botResponse = response.choices[0].message.content;
-    let botResponse = "This is the longer text hwer e we are going to test a longer response on the robots side"
+    // Extract the bot's response
+    const botResponse = response.choices[0].message.content;
+    
     return botResponse;
   };
 
@@ -41,8 +48,11 @@ const ChatComponent: React.FC<Props> = (props: Props) => {
     if (userInput.trim() !== '') {
       addMessage(userInput, true);
       
-      const botResponse = await handleBotMessage(userInput, 'easy', 'Spanish');
-      addMessage(botResponse, false,);
+      const botResponse = await handleBotMessage(userInput, level, language);
+      
+      if (botResponse !== null) { 
+        addMessage(botResponse, false);
+      }
       setUserInput('');
     }
   };
